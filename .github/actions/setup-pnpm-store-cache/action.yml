@@ -14,11 +14,13 @@ runs:
   steps:
     - name: Setup pnpm (corepack retry)
       shell: bash
+      env:
+        INPUT_PNPM_VERSION: ${{ inputs.pnpm-version }}
       run: |
         set -euo pipefail
         corepack enable
         for attempt in 1 2 3; do
-          if corepack prepare "pnpm@${{ inputs.pnpm-version }}" --activate; then
+          if corepack prepare "pnpm@${INPUT_PNPM_VERSION}" --activate; then
             pnpm -v
             exit 0
           fi

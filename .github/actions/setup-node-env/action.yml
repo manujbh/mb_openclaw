@@ -70,13 +70,14 @@ runs:
       shell: bash
       env:
         CI: "true"
+        INPUT_FROZEN_LOCKFILE: ${{ inputs.frozen-lockfile }}
       run: |
         export PATH="$NODE_BIN:$PATH"
         which node
         node -v
         pnpm -v
         LOCKFILE_FLAG=""
-        if [ "${{ inputs.frozen-lockfile }}" = "true" ]; then
+        if [ "$INPUT_FROZEN_LOCKFILE" = "true" ]; then
           LOCKFILE_FLAG="--frozen-lockfile"
         fi
         pnpm install $LOCKFILE_FLAG --ignore-scripts=false --config.engine-strict=false --config.enable-pre-post-scripts=true || \
