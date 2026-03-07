@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "openclaw"
+version = "2026.2.12"
+description = "Multi-channel AI gateway with extensible messaging integrations"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Communications :: Chat",
+]
+
+[project.scripts]
+openclaw = "openclaw_py:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["openclaw_py"]
